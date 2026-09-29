@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
   <div class="bg-grid" aria-hidden="true"></div>
@@ -63,6 +63,7 @@
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#lab">Lab</a>
+        <a href="#testimonials">Kind words</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav__actions">
@@ -471,12 +472,64 @@
       </div>
     </section>
 
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="section" id="testimonials">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__kicker">06 — Kind words</span>
+          <h2 class="section__title">What people I've worked with <span class="gradient-text">say</span></h2>
+          <p class="section__sub">LinkedIn recommendations from my mentor, my project lead and a teammate.</p>
+        </header>
+
+        <div class="quotes">
+          <figure class="quote reveal">
+            <span class="quote__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>
+              Hamza is an ideal addition to any team. I worked closely with him at 10Pearls. From the start, he demonstrated a strong work ethic, always willing to go the extra mile to complete tasks. Hamza's standout qualities include his intelligence and <strong>exceptional problem-solving skills, particularly in complex, multi-service systems</strong>. He possesses a keen appetite for learning new technologies, eagerly embracing all aspects of our system. Beyond his technical prowess, Hamza excels in communication and teamwork, with a friendly nature that facilitates easy integration into any team.
+            </blockquote>
+            <figcaption class="quote__who">
+              <span class="quote__avatar">MU</span>
+              <span><strong>Muhammad Umar</strong><small>Senior Software Engineer (Full-Stack) · Hamza's mentor</small></span>
+            </figcaption>
+          </figure>
+
+          <figure class="quote reveal">
+            <span class="quote__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>
+              Hamza was <strong>instrumental in the design, development and migration to a large and complex platform</strong> that we were building. His hard work, dedication and attention to detail played a vital role in its success. He never hesitated when faced with new challenges and was always willing to go the extra mile to make sure that the job gets done properly and in a timely fashion. He was always willing to help others to make sure the team succeeds as a whole. I would highly recommend him.
+            </blockquote>
+            <figcaption class="quote__who">
+              <span class="quote__avatar">AK</span>
+              <span><strong>Ajay Kumar</strong><small>Project Lead, 10Pearls · Managed Hamza directly</small></span>
+            </figcaption>
+          </figure>
+
+          <figure class="quote reveal">
+            <span class="quote__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>
+              Hamza is an absolute gem of a resource and <strong>one of the most competent and passionate developers I've ever come across</strong>. I have had the privilege to work with him for over two years on a very fast-paced and challenging project, and he has proven himself to be one of the most remarkable and dependable team players over and over. He not only performs his duties to the fullest but also brings out the best in other team members by training and onboarding junior resources.
+            </blockquote>
+            <figcaption class="quote__who">
+              <span class="quote__avatar">MS</span>
+              <span><strong>Muhammad Saad</strong><small>Principal Test Consultant, 10Pearls · Same team</small></span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="lab__more reveal">
+          <a href="https://www.linkedin.com/in/hamza-muhammad-sohail-6812aa16a/details/recommendations/" class="btn btn--ghost" target="_blank" rel="noopener">
+            Read them on LinkedIn ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ CONTACT ============ -->
     <section class="section" id="contact">
       <div class="container">
         <div class="contact reveal">
           <div class="contact__intro">
-            <span class="section__kicker">06 — Contact</span>
+            <span class="section__kicker">07 — Contact</span>
             <h2 class="section__title">Let's build something <span class="gradient-text">great together</span></h2>
             <p>Have a project, role or idea in mind? My inbox is open, and I'll get back to you as soon as I can.</p>
             <ul class="contact__list">
@@ -496,7 +549,7 @@
             </ul>
           </div>
           <!-- Set data-formspree to your Formspree form ID (e.g. "xyzabcd") to deliver messages to your inbox. Empty = falls back to the visitor's email app. -->
-          <form class="contact__form" id="contactForm" data-formspree="">
+          <form class="contact__form" id="contactForm" data-formspree="maenvqwz">
             <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
             <label>Name<input type="text" name="name" required placeholder="Your name" /></label>
             <label>Email<input type="email" name="email" required placeholder="you@company.com" /></label>
@@ -520,6 +573,8 @@
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
+  <!-- Visitor stats: https://hamzaansari22.goatcounter.com -->
+  <script data-goatcounter="https://hamzaansari22.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
