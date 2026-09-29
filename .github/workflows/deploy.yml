@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, "claude/ecstatic-fermi-ql8xd3"]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
