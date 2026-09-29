@@ -446,7 +446,7 @@ button { font: inherit; cursor: pointer; }
 .lab-card p { font-size: 0.87rem; color: var(--muted); }
 .lab-card code { font-family: var(--font-mono); font-size: 0.8rem; padding: 1px 5px; border-radius: 5px; background: var(--surface-2); }
 .lab-card .tags { margin-top: auto; }
-.lab__more { display: flex; justify-content: center; margin-top: 28px; }
+.lab__more { display: flex; justify-content: center; margin-top: 48px; }
 @media (max-width: 980px) { .lab { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .lab { grid-template-columns: 1fr; } }
 
