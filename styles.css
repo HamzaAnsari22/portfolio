@@ -425,3 +425,31 @@ button { font: inherit; cursor: pointer; }
   .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ========== Project link ========== */
+.project__link { margin-top: 14px; font-size: 0.86rem; font-weight: 600; color: var(--accent-2); align-self: flex-start; }
+.project__link:hover { text-decoration: underline; }
+
+/* ========== Lab (side projects) ========== */
+.lab { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.lab-card {
+  display: flex; flex-direction: column; padding: 22px; border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--surface);
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.lab-card:hover { transform: translateY(-5px); border-color: color-mix(in srgb, var(--accent-2) 55%, transparent); box-shadow: var(--shadow); }
+.lab-card__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.lab-card__emoji { font-size: 1.6rem; }
+.lab-card__arrow { color: var(--muted); font-size: 1.1rem; transition: transform 0.3s, color 0.3s; }
+.lab-card:hover .lab-card__arrow { color: var(--accent-2); transform: translate(3px, -3px); }
+.lab-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.lab-card p { font-size: 0.87rem; color: var(--muted); }
+.lab-card code { font-family: var(--font-mono); font-size: 0.8rem; padding: 1px 5px; border-radius: 5px; background: var(--surface-2); }
+.lab-card .tags { margin-top: auto; }
+.lab__more { display: flex; justify-content: center; margin-top: 28px; }
+@media (max-width: 980px) { .lab { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .lab { grid-template-columns: 1fr; } }
+
+/* Honeypot field for spam bots */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.btn[disabled] { opacity: 0.6; pointer-events: none; }

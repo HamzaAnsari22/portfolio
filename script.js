@@ -148,14 +148,41 @@
     });
   });
 
-  // ---- Contact form → mailto ----
-  $("#contactForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const data = new FormData(e.target);
+  // ---- Contact form → Formspree, falling back to mailto ----
+  const form = $("#contactForm");
+  const formspreeId = form.dataset.formspree.trim();
+  if (formspreeId) $("#contactNote").textContent = "I usually reply within a day or two.";
+
+  const openMailto = (data) => {
     const subject = encodeURIComponent(`Portfolio enquiry from ${data.get("name")}`);
     const body = encodeURIComponent(`${data.get("message")}\n\n— ${data.get("name")} (${data.get("email")})`);
     window.location.href = `mailto:ansarihamza438@gmail.com?subject=${subject}&body=${body}`;
     showToast("Opening your email app…");
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    if (data.get("_gotcha")) return;
+    if (!formspreeId) return openMailto(data);
+
+    const btn = $("button[type=submit]", form);
+    btn.disabled = true;
+    try {
+      const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (!res.ok) throw new Error(res.statusText);
+      form.reset();
+      showToast("Thanks! Your message has been sent ✓");
+    } catch {
+      showToast("Couldn't send. Opening your email app instead…");
+      openMailto(data);
+    } finally {
+      btn.disabled = false;
+    }
   });
 
   // ---- Footer year ----
