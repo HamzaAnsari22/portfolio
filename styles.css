@@ -478,3 +478,31 @@ button { font: inherit; cursor: pointer; }
   background: var(--grad); color: #fff; font-weight: 700; font-size: 0.85rem; font-family: var(--font-head);
 }
 @media (max-width: 980px) { .quotes { grid-template-columns: 1fr; } }
+
+/* ========== Experience: company with multiple roles ========== */
+.timeline__company { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.timeline__company h3 { font-size: 1.45rem; }
+.timeline__tenure { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+.role { position: relative; padding: 20px 0 4px 20px; margin-left: 4px; border-left: 2px solid var(--border); }
+.role + .role { margin-top: 10px; }
+.role::before {
+  content: ""; position: absolute; left: -7px; top: 26px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--accent-2);
+}
+.role h4 { font-family: var(--font-head); font-size: 1.12rem; margin: 2px 0 4px; letter-spacing: -0.01em; }
+.role__project { font-size: 0.9rem; color: var(--accent-2); margin: 0; }
+.role .timeline__list { margin-top: 12px; }
+
+/* ========== Grid tweaks ========== */
+.skills { grid-template-columns: repeat(4, 1fr); }
+.skill-card { padding: 22px; }
+.projects { grid-template-columns: repeat(2, 1fr); }
+.project--featured { grid-column: span 2; }
+.lab { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 1080px) { .skills { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 980px) { .lab { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 760px) {
+  .skills, .projects, .lab { grid-template-columns: 1fr; }
+  .project--featured { grid-column: auto; }
+  .role { padding-left: 16px; }
+}
