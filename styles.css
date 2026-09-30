@@ -526,7 +526,7 @@ img.tech-icon { background: none; object-fit: contain; }
 /* ========== Responsive ========== */
 @media (max-width: 980px) {
   .hero__inner, .about, .contact { grid-template-columns: minmax(0, 1fr); }
-  .hero__visual { max-width: 560px; margin-top: 12px; }
+  .hero__visual { width: 100%; max-width: 560px; margin-top: 12px; margin-left: auto; }
   .skills, .projects { grid-template-columns: 1fr 1fr; }
   .project--featured { grid-column: span 2; }
   .stats { grid-template-columns: repeat(2, 1fr); }
