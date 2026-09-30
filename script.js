@@ -156,7 +156,7 @@
   const openMailto = (data) => {
     const subject = encodeURIComponent(`Portfolio enquiry from ${data.get("name")}`);
     const body = encodeURIComponent(`${data.get("message")}\n\n— ${data.get("name")} (${data.get("email")})`);
-    window.location.href = `mailto:ansarihamza438@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hamzasohail22.dev@gmail.com?subject=${subject}&body=${body}`;
     showToast("Opening your email app…");
   };
 
