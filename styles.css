@@ -186,7 +186,7 @@ h1 .gradient-text, h2 .gradient-text, .typed {
 .nav__actions { display: flex; align-items: center; gap: 8px; }
 .nav__actions .icon-btn { border-radius: 12px; }
 .nav__cv { padding: 9px 16px; }
-.nav__burger { display: none; flex-direction: column; gap: 4px; }
+.nav__burger { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
 .nav__burger span { display: block; width: 18px; height: 2px; background: currentColor; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
 .nav__burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .nav__burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
@@ -541,6 +541,8 @@ img.tech-icon { background: none; object-fit: contain; }
   .nav__links.is-open { opacity: 1; transform: none; pointer-events: auto; }
   .nav__links a { padding: 12px 14px; border-radius: 12px; }
   .nav__links a::after { display: none; }
+  /* Keep the header solid on small screens so page content doesn't show through it */
+  .nav__inner, .nav.is-scrolled .nav__inner { background: color-mix(in srgb, var(--bg) 94%, transparent); }
 }
 @media (max-width: 760px) {
   .nav__cv { display: none; }
