@@ -219,6 +219,8 @@ h1 .gradient-text, h2 .gradient-text, .typed {
   transition: color 0.2s, border-color 0.2s, transform 0.2s;
 }
 .hero__socials a:hover { color: var(--text); border-color: var(--accent); transform: translateY(-3px); }
+.hero__socials a[aria-label="LinkedIn"]:hover { color: #fff; background: #0a66c2; border-color: #0a66c2; }
+.hero__socials a[aria-label="Email"]:hover { color: #ea4335; border-color: #ea4335; }
 
 .hero__visual { position: relative; }
 .code-card {
@@ -274,7 +276,9 @@ h1 .gradient-text, h2 .gradient-text, .typed {
   mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
 }
 .marquee__track { display: flex; gap: 44px; width: max-content; animation: marquee 40s linear infinite; }
-.marquee__track span { font-family: var(--font-head); font-weight: 600; font-size: 1.05rem; color: var(--muted); white-space: nowrap; }
+.marquee__track span { display: inline-flex; align-items: center; font-family: var(--font-head); font-weight: 600; font-size: 1.05rem; color: var(--muted); white-space: nowrap; }
+.marquee__track .tech-icon { width: 1.3em; height: 1.3em; margin-right: 10px; }
+.marquee__track .tech-icon--wide { width: 2em; }
 .marquee__track span::before { content: "✦"; margin-right: 44px; color: var(--accent); }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
@@ -326,6 +330,20 @@ h1 .gradient-text, h2 .gradient-text, .typed {
   background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
 }
 .tags--sm li { font-size: 0.76rem; padding: 4px 10px; font-family: var(--font-mono); color: var(--muted); }
+.tags li.has-icon { display: inline-flex; align-items: center; gap: 7px; padding-left: 10px; }
+.tags--sm li.has-icon { gap: 6px; padding-left: 8px; }
+
+/* Tech logos (injected by script.js) */
+.tech-icon {
+  flex: none; display: inline-block; width: 1.15em; height: 1.15em;
+  background: var(--c, currentColor);
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+img.tech-icon { background: none; object-fit: contain; }
+.tech-icon--wide { width: 1.75em; }
+.tags li .tech-icon { transition: transform 0.2s; }
+.tags li:hover .tech-icon { transform: scale(1.15); }
 
 /* Timeline */
 .timeline { position: relative; padding-left: 36px; }
@@ -409,7 +427,16 @@ h1 .gradient-text, h2 .gradient-text, .typed {
 .contact__list small { display: block; color: var(--muted); font-size: 0.76rem; }
 .contact__list a, .contact__list span:not(.contact__icon) { font-weight: 600; word-break: break-all; }
 .contact__list a:hover { color: var(--accent-2); }
-.contact__icon { font-size: 1.2rem; }
+.contact__icon {
+  flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  transition: transform 0.25s;
+}
+.contact__list li:hover .contact__icon { transform: scale(1.06); }
+.contact__icon--gmail { background: #fff; border-color: rgba(0, 0, 0, 0.06); }
+.contact__icon--linkedin { background: #0a66c2; border-color: #0a66c2; color: #fff; }
+.contact__icon--github { background: #181717; border-color: rgba(255, 255, 255, 0.12); color: #fff; }
+.contact__icon--location { color: var(--accent-2); }
 .copy-btn {
   padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface);
   color: var(--muted); font-size: 0.78rem;
@@ -442,8 +469,59 @@ h1 .gradient-text, h2 .gradient-text, .typed {
 .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 
 /* Reveal animation */
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s cubic-bezier(.2,.7,.2,1), transform 0.8s cubic-bezier(.2,.7,.2,1); }
-.reveal.is-visible { opacity: 1; transform: none; }
+.reveal {
+  opacity: 0; transform: translateY(26px); filter: blur(6px);
+  transition: opacity 0.8s cubic-bezier(.2,.7,.2,1), transform 0.8s cubic-bezier(.2,.7,.2,1), filter 0.8s cubic-bezier(.2,.7,.2,1);
+}
+.reveal.is-visible { opacity: 1; transform: none; filter: none; }
+
+/* ========== Motion effects ========== */
+/* Tags pop in one after another once their card is revealed (--i set in script.js) */
+.reveal .tags li {
+  opacity: 0; transform: translateY(8px) scale(0.94);
+  transition: opacity 0.45s, transform 0.45s cubic-bezier(.2,.8,.2,1.2), border-color 0.2s;
+  transition-delay: calc(var(--i, 0) * 35ms + 250ms);
+}
+.reveal.is-visible .tags li { opacity: 1; transform: none; }
+.tags li:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--border)); }
+
+/* Section kicker line draws in */
+.reveal .section__kicker::before { width: 0; transition: width 0.8s cubic-bezier(.2,.7,.2,1) 0.3s; }
+.reveal.is-visible .section__kicker::before { width: 28px; }
+
+/* Slow shimmer through the gradient words and logo mark */
+.gradient-text, .nav__logo-mark { background-size: 200% 100%; animation: shimmer 6s ease-in-out infinite alternate; }
+@keyframes shimmer { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+
+/* Shine sweep across primary buttons */
+.btn--primary { position: relative; overflow: hidden; isolation: isolate; }
+.btn--primary::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+}
+.btn--primary:hover::after { transform: translateX(120%); transition: transform 0.75s ease; }
+.btn.is-magnetic { transition: transform 0.15s ease-out, box-shadow 0.25s, background 0.25s; }
+
+/* Code card follows the cursor in 3D */
+.code-card.is-tilting { transition: transform 0.12s ease-out; }
+
+/* Timeline line draws as you scroll through it (--tl set in script.js) */
+.timeline::before { transform-origin: top; transform: scaleY(var(--tl, 0)); }
+.timeline__dot { transition: transform 0.4s cubic-bezier(.2,.8,.2,1.4), box-shadow 0.4s; }
+.timeline__item.is-visible .timeline__dot { animation: dot-pop 0.6s cubic-bezier(.2,.8,.2,1.4) 0.2s both; }
+@keyframes dot-pop { from { transform: scale(0); } }
+
+/* Soft light that trails the cursor */
+.cursor-glow {
+  position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none;
+  width: 520px; height: 520px; margin: -260px 0 0 -260px; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent), transparent 65%);
+  opacity: 0; transition: opacity 0.6s;
+  will-change: transform;
+}
+.cursor-glow.is-on { opacity: 1; }
+:root[data-theme="light"] .cursor-glow { background: radial-gradient(circle, color-mix(in srgb, var(--accent) 12%, transparent), transparent 65%); }
 
 /* ========== Responsive ========== */
 @media (max-width: 980px) {
