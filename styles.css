@@ -84,6 +84,7 @@ h1 .gradient-text, h2 .gradient-text, .typed {
   font-family: var(--font-serif); font-style: italic; font-weight: 400;
   font-size: 1.08em; letter-spacing: -0.01em;
   padding-right: 0.08em; margin-right: -0.06em; /* room for the italic overhang under background-clip, without widening the gap */
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; /* repeat that room on every wrapped line, so the last letter before a wrap isn't clipped */
 }
 
 /* ========== Background decor ========== */
@@ -204,7 +205,7 @@ h1 .gradient-text, h2 .gradient-text, .typed {
 
 /* ========== Hero ========== */
 .hero { padding: 72px 0 40px; }
-.hero__inner { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.hero__inner { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 56px; align-items: center; }
 .hero__badge {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 7px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 500;

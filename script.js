@@ -86,7 +86,6 @@
     "real-time IoT platforms",
     "secure REST APIs",
     "React & Angular apps",
-    "cross-chain DeFi apps",
     "AI-powered products",
     "things that ship on time",
   ];
