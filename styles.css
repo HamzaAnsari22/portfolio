@@ -69,6 +69,16 @@ button { font: inherit; cursor: pointer; }
   background-clip: text;
   color: transparent;
 }
+.gold-text {
+  background: linear-gradient(100deg, #b8860b 0%, #f5d76e 35%, #fff1b8 50%, #e6b422 65%, #b8860b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+:root[data-theme="light"] .gold-text {
+  background-image: linear-gradient(100deg, #8a6100 0%, #b8860b 40%, #d4a017 55%, #8a6100 100%);
+}
 /* Editorial accent: gradient words inside headings switch to an italic serif */
 h1 .gradient-text, h2 .gradient-text, .typed {
   font-family: var(--font-serif); font-style: italic; font-weight: 400;
