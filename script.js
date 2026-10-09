@@ -90,11 +90,35 @@
     "things that ship on time",
   ];
   if (!reduceMotion) {
+    // When a phrase wraps onto another line (or back), animate the title's height so the
+    // content below slides instead of jumping. The title is measured at its natural height,
+    // then the height is set explicitly so CSS can transition it.
+    const title = $(".hero__title");
+    const inner = document.createElement("span");
+    inner.style.display = "block";
+    inner.append(...title.childNodes);
+    title.append(inner);
+    title.classList.add("is-fitted");
+    let titleH = 0;
+    const fitTitle = () => {
+      // Natural height = wrapped content + the title's own padding (measured without touching its height)
+      const cs = getComputedStyle(title);
+      const h = Math.ceil(inner.getBoundingClientRect().height + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom));
+      if (h === titleH) return;
+      if (!titleH) { title.style.transition = "none"; title.style.height = `${h}px`; void title.offsetHeight; title.style.transition = ""; }
+      titleH = h;
+      title.style.height = `${h}px`;
+    };
+    fitTitle();
+    window.addEventListener("resize", fitTitle, { passive: true });
+    document.fonts?.ready.then(fitTitle);
+
     let p = 0, c = phrases[0].length, deleting = true;
     const step = () => {
       const word = phrases[p];
       c += deleting ? -1 : 1;
       typed.textContent = word.slice(0, c);
+      fitTitle();
       let delay = deleting ? 40 : 80;
       if (!deleting && c === word.length) { deleting = true; delay = 1800; }
       else if (deleting && c === 0) { deleting = false; p = (p + 1) % phrases.length; delay = 300; }

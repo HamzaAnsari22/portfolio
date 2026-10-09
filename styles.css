@@ -205,7 +205,8 @@ h1 .gradient-text, h2 .gradient-text, .typed {
 
 /* ========== Hero ========== */
 .hero { padding: 72px 0 40px; }
-.hero__inner { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+/* Top-aligned (not centred) so the card stays put when the typed headline wraps onto another line */
+.hero__inner { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 56px; align-items: start; }
 .hero__badge {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 7px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 500;
@@ -214,6 +215,11 @@ h1 .gradient-text, h2 .gradient-text, .typed {
 .pulse { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 0 #22c55e99; animation: pulse 2s infinite; }
 @keyframes pulse { 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
 .hero__title { font-size: clamp(2.5rem, 5.8vw, 4.5rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.04; margin: 20px 0 22px; }
+/* Set by script.js: height animates as the typed phrase wraps; padding keeps italic descenders inside the clip */
+.hero__title.is-fitted {
+  overflow: hidden; padding-bottom: 0.14em; margin-bottom: calc(22px - 0.14em);
+  transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
 .typed {
   background: linear-gradient(100deg, var(--accent-2), var(--accent));
   -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -233,7 +239,7 @@ h1 .gradient-text, h2 .gradient-text, .typed {
 .hero__socials a[aria-label="LinkedIn"]:hover { color: #fff; background: #0a66c2; border-color: #0a66c2; }
 .hero__socials a[aria-label="Email"]:hover { color: #ea4335; border-color: #ea4335; }
 
-.hero__visual { position: relative; }
+.hero__visual { position: relative; margin-top: 32px; } /* lines the card up with the two-line headline layout */
 .code-card {
   position: relative; border-radius: var(--radius); overflow: hidden;
   background: color-mix(in srgb, var(--bg) 80%, #1b1f3a);
