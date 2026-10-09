@@ -86,6 +86,7 @@
     "real-time IoT platforms",
     "secure REST APIs",
     "React & Angular apps",
+    "cross-chain DeFi apps",
     "things that ship on time",
   ];
   if (!reduceMotion) {
@@ -292,6 +293,11 @@
     "Bootstrap": mask("bootstrap", "#7952B3"), "ethers.js": mask("ethers", "#4F63E6"),
     "Web3": mask("web3dotjs", "#F16822"), "Selenium": mask("selenium", "#43B02A"),
     "Firebase": mask("firebase", "#FFA611"), "SQLite": mask("sqlite", "#0F80CC"), "PHP": mask("php", "#777BB4"),
+    "React Router": mask("reactrouter", "#CA4245"), "Tailwind CSS": mask("tailwindcss", "#06B6D4"),
+    "Radix UI": mask("radixui"), "Framer Motion": mask("framer", "#0055FF"), "Mongoose": mask("mongoose"),
+    "Vercel": mask("vercel"), "Netlify": mask("netlify", "#00C7B7"), "pnpm": mask("pnpm", "#F69220"),
+    "Vitest": mask("vitest", "#6E9F18"), "Prettier": mask("prettier", "#F7B93E"), "Resend": mask("resend"),
+    "WalletConnect": mask("walletconnect", "#3B99FC"),
   };
   $$(".tags li, .marquee__track span").forEach((el) => {
     const tech = TECH[el.textContent.trim()];

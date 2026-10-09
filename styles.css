@@ -407,6 +407,9 @@ img.tech-icon { background: none; object-fit: contain; }
 .project__points li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-2); font-weight: 700; }
 .project__points strong { color: var(--text); }
 .project .tags { margin-top: auto; }
+.project__links { display: flex; flex-wrap: wrap; gap: 16px; margin: -4px 0 18px; font-family: var(--font-mono); font-size: 0.8rem; }
+.project__links a { color: var(--accent-2); transition: color 0.2s; }
+.project__links a:hover { color: var(--text); }
 
 /* Contact */
 .contact {
