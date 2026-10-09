@@ -113,8 +113,17 @@
     window.addEventListener("resize", fitTitle, { passive: true });
     document.fonts?.ready.then(fitTitle);
 
+    // Pause while the hero is off screen: its height changes would otherwise shift the page
+    // (and whatever is under the pointer) while the visitor reads further down.
+    let heroVisible = true, paused = false;
+    new IntersectionObserver(([entry]) => {
+      heroVisible = entry.isIntersecting;
+      if (heroVisible && paused) { paused = false; setTimeout(step, 300); }
+    }).observe(title);
+
     let p = 0, c = phrases[0].length, deleting = true;
     const step = () => {
+      if (!heroVisible) { paused = true; return; }
       const word = phrases[p];
       c += deleting ? -1 : 1;
       typed.textContent = word.slice(0, c);

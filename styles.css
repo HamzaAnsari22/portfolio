@@ -319,7 +319,7 @@ h1 .gradient-text, h2 .gradient-text, .typed {
 .about__text strong { color: var(--text); font-weight: 600; }
 .about__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .mini-card {
-  padding: 22px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface);
+  position: relative; padding: 22px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface);
   transition: transform 0.3s, border-color 0.3s;
 }
 .mini-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 60%, transparent); }
@@ -337,7 +337,7 @@ h1 .gradient-text, h2 .gradient-text, .typed {
   content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.3s;
   background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 16%, transparent), transparent 60%);
 }
-.skill-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
+.skill-card:hover { border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
 .skill-card:hover::after { opacity: 1; }
 .skill-card h3 { font-size: 1.1rem; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
 .skill-card__icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: var(--surface-2); font-size: 1.1rem; }
@@ -403,6 +403,11 @@ img.tech-icon { background: none; object-fit: contain; }
   position: relative; display: flex; flex-direction: column; padding: 26px; border-radius: var(--radius);
   border: 1px solid var(--border); background: var(--surface); transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s, opacity 0.35s;
 }
+/* Lifted cards keep a strip under them while hovered, so a pointer resting near the bottom
+   edge stays on the card after it lifts instead of flickering between hover states */
+.project:hover::before, .lab-card:hover::before, .mini-card:hover::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 10px;
+}
 .project:hover { transform: translateY(-6px); border-color: color-mix(in srgb, var(--accent) 55%, transparent); box-shadow: var(--shadow); }
 .project.is-hidden { display: none; }
 .project--featured {
@@ -414,6 +419,7 @@ img.tech-icon { background: none; object-fit: contain; }
 }
 .project--featured .project__points { grid-template-columns: 1fr 1fr; }
 .project__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.project__emoji img { width: 26px; height: 26px; }
 .project__emoji { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: var(--surface-2); font-size: 1.5rem; }
 .project__tag { font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-2); }
 .project h3 { font-size: 1.25rem; margin-bottom: 10px; }
@@ -597,7 +603,7 @@ img.tech-icon { background: none; object-fit: contain; }
 /* ========== Lab (side projects) ========== */
 .lab { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .lab-card {
-  display: flex; flex-direction: column; padding: 22px; border-radius: var(--radius);
+  position: relative; display: flex; flex-direction: column; padding: 22px; border-radius: var(--radius);
   border: 1px solid var(--border); background: var(--surface);
   transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
@@ -625,7 +631,7 @@ img.tech-icon { background: none; object-fit: contain; }
   padding: 30px 26px 24px; border-radius: var(--radius); border: 1px solid var(--border);
   background: var(--surface); overflow: hidden; transition: transform 0.3s, border-color 0.3s;
 }
-.quote:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
+.quote:hover { border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
 .quote__mark {
   position: absolute; top: -18px; right: 18px; font-family: var(--font-serif); font-size: 7rem; line-height: 1;
   background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; opacity: 0.35;
