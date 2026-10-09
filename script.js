@@ -214,6 +214,14 @@
     document.documentElement.addEventListener("pointerleave", () => glow.classList.remove("is-on"));
   }
 
+  // ---- Back to top ----
+  // #top is the sticky header, which is always "in view", so mobile browsers don't scroll to it
+  $$('a[href="#top"]').forEach((a) => a.addEventListener("click", (e) => {
+    e.preventDefault();
+    setMenu(false);
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+  }));
+
   // ---- Project filters ----
   const filters = $$(".filter");
   const projects = $$(".project");

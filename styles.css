@@ -580,7 +580,9 @@ img.tech-icon { background: none; object-fit: contain; }
   .contact { padding: 26px 20px; }
   .section { padding-top: 84px; }
   .float-chip--2 { left: 8px; }
-  .code-card__body { font-size: 0.74rem; padding: 16px; }
+  /* Scale the code to the screen so it fits without a sideways scroll box, which on touch
+     screens would also swallow vertical swipes that start on the card */
+  .code-card__body { font-size: clamp(9.5px, 2.7vw, 0.74rem); padding: 16px; overflow-x: hidden; }
 }
 @media (max-width: 420px) {
   .nav__logo-role { display: none; }
