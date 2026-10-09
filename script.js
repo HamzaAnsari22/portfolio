@@ -87,6 +87,7 @@
     "secure REST APIs",
     "React & Angular apps",
     "cross-chain DeFi apps",
+    "AI-powered products",
     "things that ship on time",
   ];
   if (!reduceMotion) {
@@ -298,6 +299,9 @@
     "Vercel": mask("vercel"), "Netlify": mask("netlify", "#00C7B7"), "pnpm": mask("pnpm", "#F69220"),
     "Vitest": mask("vitest", "#6E9F18"), "Prettier": mask("prettier", "#F7B93E"), "Resend": mask("resend"),
     "WalletConnect": mask("walletconnect", "#3B99FC"),
+    "Google Gemini API": mask("googlegemini", "#8E75B2"), "Gemini API": mask("googlegemini", "#8E75B2"),
+    "Three.js": mask("threedotjs"), "Cloudinary": mask("cloudinary", "#3448C5"),
+    "Testing Library": mask("testinglibrary", "#E33332"),
   };
   $$(".tags li, .marquee__track span").forEach((el) => {
     const tech = TECH[el.textContent.trim()];
